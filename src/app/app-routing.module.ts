@@ -1,8 +1,13 @@
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { Routes, RouterModule } from '@angular/router';
+import { AddFactureComponent } from './facture/add-facture/add-facture.component';
+import { ListFactureComponent } from './facture/list-facture/list-facture.component';
 
-const routes: Routes = [];
+const routes: Routes = [
+  { path: "facture", component: ListFactureComponent },
+  {path:"addfacture",component:AddFactureComponent},
 
+];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
