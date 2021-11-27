@@ -1,6 +1,8 @@
-import { Component, OnInit ,Output,EventEmitter, Input} from '@angular/core';
+import { Component, OnInit ,Output,EventEmitter, Input,SimpleChanges} from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { Rayon } from '../models/rayon';
+import { RayonService } from '../rayon.service';
 @Component({
   selector: 'app-edit-rayon',
   templateUrl: './edit-rayon.component.html',
@@ -8,15 +10,45 @@ import { Rayon } from '../models/rayon';
 })
 export class EditRayonComponent implements OnInit {
   myForm : FormGroup;
+  rayons : Rayon[];
+  RayonEdit : Rayon ; 
+  @Input() prop2:Rayon;
   @Input() rayonToEdit:Rayon;
-  @Output() edited = new EventEmitter<Rayon>();
-  constructor() { }
+
+  @Output() editRayon = new EventEmitter<Rayon>();
+
+  constructor(private rs:RayonService, private ac:ActivatedRoute) { }
 
   ngOnInit(): void {
+    this.myForm=new FormGroup({
+      CodeRayon:new FormControl(this.rayonToEdit.codeRayon),
+      libelle:new FormControl(this.rayonToEdit.libelleRayon)
+      
+    })
   }
-  edit(){
+  ngOnChanges(changes:SimpleChanges){
+     /*this.FormProviderEdit=new FormGroup({
+      codeFedit:new FormControl(this.ProviderToEdit.codeF),
+      dateCreationedit:new FormControl(this.ProviderToEdit.dateCreation),
+      categorieProduitedit:new FormControl(this.ProviderToEdit.categorieProduit)
+
+     })*/
+     console.log(changes);
+     if(!changes.rayonToEdit.firstChange){
+     this.myForm.setControl('codeRayon',new FormControl(this.rayonToEdit.codeRayon));
+     this.myForm.setControl('libelleRayon',new FormControl(this.rayonToEdit.libelleRayon)); 
+   }
+   }
+   edit(){
     console.log(this.myForm.getRawValue());
-    this.edited.emit(this.myForm.getRawValue());
-    this.myForm.reset();
+    this.rs.updateRayon(this.myForm.getRawValue()).subscribe();
+    this.editRayon.emit(this.myForm.getRawValue());
+    this.myForm.reset();  
   }
+
+
+
 }
+  
+
+

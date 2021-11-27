@@ -27,7 +27,7 @@
                     <td>{{u.codeRayon}}</td>
                     <td>{{u.libelleRayon}}</td>
                     <td><button class ="btn btn-danger" (click)="deleteRayon(u.idRayon,i)" >supprimer</button></td>
-                    <td><button class="btn btn-warning" (click)="updateRayon(id,ray)">Modifier</button></td>
+                    <td><button class="btn btn-warning" (click)="showEdit(i)">Modifier</button></td>
                 </tr>
                 </tbody>
               </table>
@@ -50,7 +50,7 @@
       </div>
       <!-- /.row -->
     <!-- /.container-fluid -->
-   
+    <app-edit-rayon (edited)="updaterayon($event)" [prop2]="myRay" [rayonToEdit]="myRay" *ngIf="show" ></app-edit-rayon>
   </section>
   <!-- Main Footer -->
 

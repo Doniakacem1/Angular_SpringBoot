@@ -1,0 +1,28 @@
+import { Injectable } from '@angular/core';
+import { Stock } from './models/stock';
+import { Observable } from 'rxjs';
+import { HttpClient,HttpHeaders } from '@angular/common/http'; 
+
+@Injectable({
+  providedIn: 'root'
+})
+export class StockService {
+
+  constructor(private http:HttpClient) { }
+  httpOptions = {
+    headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+    })
+    }
+  getStockList(): Observable<Stock[]> {  
+    return this.http.get<Stock[]>("http://localhost:8081/SpringMVC/servlet/getAllStock");  
+  }  
+  deleteStock (ry: Stock | number): Observable<Stock> {
+    const id = typeof ry === 'number' ? ry : ry.idStock;
+    const url="http://localhost:8081/SpringMVC/servlet/remove-stock/"+id;
+    return this.http.delete<Stock>(url);
+    }
+    addStock (Stock: object): Observable<object> {  
+      return this.http.post('http://localhost:8081/SpringMVC/servlet/add-Stock', Stock);  }
+}
+

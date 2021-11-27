@@ -1,0 +1,60 @@
+<!-- Content Wrapper. Contains page content -->
+<div>
+    <section class="content">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-header">
+                  <button  [routerLink]="['/AddStock']" class="btn btn-primary">Ajouter</button>
+                  
+                   </div>
+                <!-- /.card-header -->
+                <div class="card-body">
+                  <table class="table table-bordered">
+                 
+                    <thead>
+                      <tr>
+                        <th>Quantité Stock</th>
+                        <th>Quantité Min</th>
+                        <th>libelle Stock</th>
+                        <th>Supprimer</th>
+                        <th>Modifier</th>
+                     
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr  *ngFor="let u of stocks ; let i=index " >
+                        <td>{{u.qteStock}}</td>
+                        <td>{{u.qteMin}}</td>
+                        <td>{{u.libelleStock}}</td>
+
+                        <td><button class="btn btn-warning" >Modifier</button></td>
+                        <td><button class ="btn btn-danger" (click)="deleteStock(u.idStock,i)" >supprimer</button></td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
+               
+                </div>
+                <!-- /.card-body -->
+                <div class="card-footer clearfix">
+                    <ul class="pagination pagination-sm m-0 float-right">
+                      <li class="page-item"><a class="page-link" href="#">«</a></li>
+                      <li class="page-item"><a class="page-link" href="#">1</a></li>
+                      <li class="page-item"><a class="page-link" href="#">2</a></li>
+                      <li class="page-item"><a class="page-link" href="#">3</a></li>
+                      <li class="page-item"><a class="page-link" href="#">»</a></li>
+                    </ul>
+                  </div>
+              </div>
+              <!-- /.card -->
+            </div>
+          </div>
+          <!-- /.row -->
+        <!-- /.container-fluid -->
+     
+      </section>
+      <!-- Main Footer -->
+    
+    </div>

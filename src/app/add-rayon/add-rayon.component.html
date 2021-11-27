@@ -1,25 +1,35 @@
-<form #MyForm="ngForm">
-    <div class="form-group">
-        <label>Code</label>
-        <input type="text" class="form-control" formControlName="code">
-        </div>
-      <div class="alert alert-danger" *ngIf="MyCode.errors">
-<div *ngIf="MyCode.errors.required">champ obligatoire</div>
-<div *ngIf="MyCode.errors.pattern">pattern non respecte</div>
-      </div>
-
-        <div class="form-group">
-            <label>Libelle</label>
-            <input type="text" class="form-control" formControlName="libelle">
-            </div>
-
-            <div  class="alert alert-danger" *ngIf="MyForm.get('libelle').errors">
-             <div *ngIf="MyForm.get('libelle').errors.required">champ obligatoire</div>
-             <div *ngIf="MyForm.get('libelle').errors.pattern">pattern non respecte</div>
-            </div>
-            <div formGroupName="sg">
-                
-            </div>
-<button class="btn btn-primary" [disabled]="MyForm.invalid" (click)="save(MyForm)">ajouter</button>
-
-</form>
+<h3>Create Rayon</h3>  
+<div class="row">  
+  <div class="col-sm-4"></div>  
+  <div class="col-sm-4" >  
+    <div [hidden]="submitted" style="width: 400px;">  
+      <form [formGroup]="Rayonsaveform" #save (ngSubmit)="saveRayon(saveRayon)">   
+          <div class="form-group">  
+              <label for="name">Rayon libelle</label>  
+              <input type="text" class="form-control"  formControlName="libelleRayon" data-toggle="tooltip"   
+                 data-placement="right" title="Enter libelle Rayon" >  
+                 <div class="alert alert-danger" *ngIf="Rayonlibelle.errors">
+                  <div *ngIf="Rayonlibelle.errors.required">champ obligatoire</div>
+                  <div *ngIf="Rayonlibelle.errors.pattern">pattern non respecte</div>
+                        </div>
+          </div>  
+          <div class="form-group">  
+              <label for="name">code Rayons</label>  
+              <input type="text" class="form-control" formControlName="codeRayon"   
+                data-toggle="tooltip" data-placement="right" title="Enter code rayon">  
+                <div class="alert alert-danger" *ngIf="Rayoncode.errors">
+                  <div *ngIf="Rayoncode.errors.required">champ obligatoire</div>
+                  <div *ngIf="Rayoncode.errors.pattern">pattern non respecte</div>
+                        </div> 
+          </div>  
+          <button type="submit" class="btn btn-success">Submit</button>  
+      </form>  
+  </div>  
+  </div>  
+  <div class="col-sm-4"></div>  
+</div>  
+<div class="row">  
+  <div class="col-sm-4"></div>  
+  
+  <div class="col-sm-4"></div>  
+</div>  

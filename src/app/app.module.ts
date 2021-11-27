@@ -10,6 +10,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { EditRayonComponent } from './edit-rayon/edit-rayon.component';
 import { AddRayonComponent } from './add-rayon/add-rayon.component';
+import { ListStockComponent } from './list-stock/list-stock.component';
+import { AddStockComponent } from './add-stock/add-stock.component';
  
 
 
@@ -21,6 +23,8 @@ import { AddRayonComponent } from './add-rayon/add-rayon.component';
     SideBarComponent,
     EditRayonComponent,
     AddRayonComponent,
+    ListStockComponent,
+    AddStockComponent,
 
   ],
   imports: [
