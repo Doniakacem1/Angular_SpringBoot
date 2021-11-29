@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import {Facture} from '../models/facture';
+import { Facture } from '../models/facture';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable({
@@ -8,14 +8,12 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class FactureService {
   list: Facture[];
+   
+private baseUrl = 'http://localhost:8081/SpringMVC/servlet/'; 
   
   constructor(private _http: HttpClient) { }
 
-  httpOptions = {
-    headers: new HttpHeaders({
-    'Content-Type': 'application/json'
-    })
-    }
+  
   getAllFacture(): Observable<Facture[]>{
     
     return this._http.get<Facture[]>("http://localhost:8081/SpringMVC/servlet/getFactures");
@@ -32,8 +30,21 @@ export class FactureService {
 
     return this._http.get<Facture>(url);
   }
-  
-  addFacture(facture: Facture): Observable<Facture> {
+  httpOptions = {
+    headers: new HttpHeaders({
+    'Content-Type': 'application/json'
+    })
+    }
+  addFacture(Facture: Facture): Observable<Facture> {
    
-      return this._http.post<Facture>("http://localhost:8081/SpringMVC/servlet/add-facture/", facture, this.httpOptions);}
+    return this._http.post<Facture>('http://localhost:8081/SpringMVC/servlet/add-facture',Facture, this.httpOptions);
+  }
+  
+  UpdateFacture(Facture: Facture): Observable<Facture> {
+   return this._http.put<Facture>('http://localhost:8081/SpringMVC/servlet/modify-facture',Facture);
+  } 
+
+createF(Fournisseur: object): Observable<object> {  
+  return this._http.post(`${this.baseUrl}`+'add-facture', Fournisseur);  
+} 
 }

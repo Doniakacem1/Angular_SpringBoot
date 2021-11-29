@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Input, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Facture } from '../../models/facture';
+import { FactureService } from '../../services/facture.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-facture',
@@ -8,11 +10,12 @@ import { Facture } from '../../models/facture';
   styleUrls: ['./edit-facture.component.sass']
 })
 export class EditFactureComponent implements OnInit {
+  Facture : Facture=new Facture();  
   myForm : FormGroup;
   @Input() invoiceToEdit : Facture;
   @Input() prop2 : Facture;
   @Output() edited = new EventEmitter<Facture>();
-  constructor() { }
+  constructor(private ps:FactureService,private router:Router) { }
 
   ngOnInit(): void {
 
@@ -42,14 +45,14 @@ export class EditFactureComponent implements OnInit {
      this.myForm.setControl('montantRemise',new FormControl(this.invoiceToEdit.montantRemise));
      this.myForm.setControl('montantFacture',new FormControl(this.invoiceToEdit.montantFacture));
      this.myForm.setControl('active',new FormControl(this.invoiceToEdit.active));
+     }
+    
    }
-   }
-
-
-
   edit(){
     console.log(this.myForm.getRawValue());
+    this.ps.UpdateFacture(this.myForm.getRawValue()).subscribe();
     this.edited.emit(this.myForm.getRawValue());
     this.myForm.reset();
   }
+  
 }

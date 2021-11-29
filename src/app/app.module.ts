@@ -12,6 +12,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditFactureComponent } from './facture/edit-facture/edit-facture.component';
 import { CommonModule } from '@angular/common';
 import { AddFactureComponent } from './facture/add-facture/add-facture.component';
+import { ListDetailFactureComponent } from './DetailFacture/list-detail-facture/list-detail-facture.component';
+import { EditDetailFactureComponent } from './DetailFacture/edit-detail-facture/edit-detail-facture.component';
+
+
 
 
 
@@ -22,7 +26,11 @@ import { AddFactureComponent } from './facture/add-facture/add-facture.component
     NavbarComponent,
     SidebarComponent,
     EditFactureComponent,
-    AddFactureComponent
+    AddFactureComponent,
+    ListDetailFactureComponent,
+    EditDetailFactureComponent
+
+    
 
   ],
   imports: [

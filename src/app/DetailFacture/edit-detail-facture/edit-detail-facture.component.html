@@ -1,0 +1,30 @@
+
+<div class="card-body">
+  <form [formGroup]="myForm" (submit)="edit()" >
+    <div class="form-group">
+        <label>id Detail Facture</label>
+        <input type="text" class="form-control" formControlName="idDetailFacture">
+    </div> 
+    <div class="form-group">
+        <label>Quantité</label>
+        <input type="text" class="form-control" formControlName="qte">
+    </div> 
+    <div class="form-group">
+        <label>prix Totate</label>
+        <input type="text" class="form-control" formControlName="prixTotatl">
+    </div>
+   
+     
+  
+    <div class="form-group">
+        <label>Pourcentage Remise</label>
+        <input type="text" class="form-control" formControlName="pourcentageRemise">
+    </div>
+    <div class="form-group">
+        <label>Montant Remise</label>
+        <input type="text" class="form-control" formControlName="montantRemise">
+    </div>
+    <input type="submit" class="btn btn-primary">
+    </form>
+  </div>
+  

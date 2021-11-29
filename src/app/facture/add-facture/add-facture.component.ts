@@ -1,8 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Facture } from '../../models/facture';
 import { FactureService } from '../../services/facture.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-add-facture',
@@ -10,32 +10,59 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-facture.component.sass']
 })
 export class AddFactureComponent implements OnInit {
-  facture: Facture;
-  form1: FormGroup;
-
-  constructor(private ps:FactureService,private router:Router) { }
-
+ 
+  constructor(private ps:FactureService) { }
+  Facture : Facture=new Facture();  
+  submitted = false; 
   ngOnInit(): void {
-    this.form1 = new FormGroup({
-      idFacture: new FormControl('', Validators.required,),
-      montantRemise: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(8), Validators.pattern("[0-9]{8}")]),
-      dateFacture: new FormControl('', [Validators.required,Validators.pattern("(0[1-9]|1[0-2])\/(0[1-9]|[1-2][0-9]|3[0-1])\/[0-9]{4}")]),
-      active: new FormControl('', [Validators.required]),
-      montantFacture: new FormControl('', Validators.required,)
-    });
-
+    this.submitted=false;  
   }
-  get idC (){return this.form1.get('idFacture');};
-  get montantRemiseF (){return this.form1.get('montantRemise');};
-  get montantF (){return this.form1.get('montantFacture');};
-  get dateF() { return this.form1.get('dateFacture'); }
-  get Active() { return this.form1.get('active'); }
-  save() {
-    console.log(this.form1.value);
-
-    this.ps.addFacture(this.facture).subscribe (res => {
-    console.log('Facture created!');
-    this.router.navigateByUrl('/facture');})
-    ;
-    }
+  Facturesaveform=new FormGroup({  
+     
+    idFacture: new FormControl(),
+      montantRemise: new FormControl("", [Validators.required, Validators.minLength(2), Validators.maxLength(5), Validators.pattern("[0-9]{4}")]),
+      dateFacture: new FormControl('', [Validators.required]),
+      active: new FormControl('', [Validators.required]),
+      montantFacture: new FormControl('', [Validators.required]), 
+  });  
+  
+  saveFacture(saveFacture){  
+    this.Facture=new Facture();     
+    this.Facture.montantRemise=this.montantR.value;  
+    this.Facture.dateFacture = this.dateF.value;
+    this.Facture.active = this.active.value;
+    this.Facture.montantFacture=this.montantF.value;
+      
+    this.submitted = true;  
+    this.save();  
+  }  
+  
+    
+  
+  save() {  
+    this.ps.createF(this.Facture)  
+      .subscribe(data => console.log(data), error => console.log(error));  
+    this.Facture = new Facture();  
+  }  
+  
+  get montantR(){  
+    return this.Facturesaveform.get('montantRemise');  
+  }  
+  
+  get dateF(){  
+    return this.Facturesaveform.get('dateFacture');  
+  }  
+  get active(){  
+    return this.Facturesaveform.get('active');  
+  }  
+  get montantF(){  
+    return this.Facturesaveform.get('montantFacture');  
+  }  
+  
+  
+  
+  addFactureForm(){  
+    this.submitted=false;  
+    this.Facturesaveform.reset();  
+  }  
 }

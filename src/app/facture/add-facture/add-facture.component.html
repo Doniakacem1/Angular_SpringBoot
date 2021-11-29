@@ -1,41 +1,58 @@
-<form [formGroup]="form1">
-  <div class="card-body">
-      <div class="form-group">
+<h3>Create Facture</h3>  
+<div class="row">  
+  <div class="col-sm-4"></div>  
+  <div class="col-sm-4" >  
+    <div [hidden]="submitted" style="width: 400px;">  
+      <form [formGroup]="Facturesaveform" #save (ngSubmit)="saveFacture(saveFacture)">  
+          <div class="form-group">  
+              <label for="name">montantRemise</label>  
+              <input type="text" class="form-control"  formControlName="montantRemise" data-toggle="tooltip"   
+                 data-placement="right" title="Enter montantRemise" >  
+                 <div class="alert alert-danger" *ngIf="montantR.errors">
+                    <div *ngIf="montantR.errors.required">champs obligatoire</div>
+                    <div *ngIf="montantR.errors.pattern">pattern non respecte</div>
+                          </div>
+          </div>  
+     
+          <div class="form-group">  
+              <label for="name">dateFacture</label>  
+              <input type="text" class="form-control" formControlName="dateFacture"   
+                data-toggle="tooltip" data-placement="right" title="Enter dateFacture">  
+                <div class="alert alert-danger" *ngIf="dateF.errors">
+                    <div *ngIf="dateF.errors.required">champs obligatoire</div>
+                    <div *ngIf="dateF.errors.pattern">pattern non respecte</div>
+                          </div> 
+          </div>  
 
-<br>
-montant Facture<br>
-<input type="text" name="montantFacture" formControlName="montantFacture" class="form-control" >
-<div *ngIf="montantF.invalid && montantF.touched">
-    <div   *ngIf="montantF.errors.required" class="alert alert-danger" role="alert">ce champs est obligatoire</div>
-    <div    *ngIf="montantF.errors.minlength" class="alert alert-danger" role="alert">ce champs doit contenir 8 cractere</div>
-    <div  *ngIf="montantF.errors.pattern" class="alert alert-danger" role="alert">ce champs doit contenir [a-zA-Z-0-9]</div>
-
+          <div class="form-group">  
+            <label for="name">active</label>  
+            <input type="text" class="form-control" formControlName="active"   
+              data-toggle="tooltip" data-placement="right" title="Enter active">  
+              <div class="alert alert-danger" *ngIf="active.errors">
+                <div *ngIf="active.errors.required">champs obligatoire</div>
+                <div *ngIf="active.errors.pattern">pattern non respecte</div>
+                      </div> 
+        </div>
+        <div class="form-group">  
+            <label for="name">montantFacture</label>  
+            <input type="text" class="form-control" formControlName="montantFacture"   
+              data-toggle="tooltip" data-placement="right" title="Enter montantFacture">  
+              <div class="alert alert-danger" *ngIf="montantF.errors">
+                <div *ngIf="montantF.errors.required">champs obligatoire</div>
+                <div *ngIf="montantF.errors.pattern">pattern non respecte</div>
+                      </div> 
+        </div>
+    
+          
+    
+          <button type="submit" class="btn btn-success">Submit</button>  
+      </form>  
+  </div>  
+  </div>  
+  <div class="col-sm-4"></div>  
+</div>  
+<div class="row">  
+  <div class="col-sm-4"></div>  
+  
+  <div class="col-sm-4"></div>  
 </div>
-<br>
-
-montantRemise <br>
-<input type="text" name="montantRemise" formControlName="montantRemise" class="form-control" >
-
-<div *ngIf="montantRemiseF.invalid&&montantRemiseF.touched">
-    <div *ngIf="montantRemiseF.errors.required"  class="alert alert-danger" role="alert">ce champs est obligatoire</div>
-    <div *ngIf="montantRemiseF.errors.minlength" class="alert alert-danger"  role="alert">ce champs doit contenir plus de 3 cractere</div>
-</div>
-<br>
-Date Facture<br>
-<input type="text" name="dateFacture" formControlName="dateFacture" class="form-control" > 
-<div *ngIf="dateF.invalid&&dateF.touched">
-    <div  *ngIf="dateF.errors.required" class="alert alert-danger"  role="alert">ce champs est obligatoire</div>
-    <div *ngIf="dateF.errors.pattern" class="alert alert-danger"  role="alert">ce champs doit etre sous forme de date</div>
-</div>
-<br>
-Active <br>
-<input type="text" name="active" formControlName="active" class="form-control" > 
-<div *ngIf="Active.invalid&&Active.touched">
-    <div   *ngIf="Active.errors.required" class="alert alert-danger" role="alert">ce champs est obligatoire</div>
-    <div *ngIf="Active.errors.pattern" class="alert alert-danger"  role="alert">ce champs doit contenir que de chiffre</div>
-</div>
-<br> 
-<button  class="btn btn-primary" (click)="save()" > Ajouter </button>
-<br>
-</div></div>
-</form>
