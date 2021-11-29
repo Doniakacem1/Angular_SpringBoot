@@ -1,13 +1,17 @@
 
     <h3 style="text-align: center;">Modifier un Rayon </h3>
-    <form [formGroup]="myForm" (ngSubmit)="edit()" >
+    <form [formGroup]="myForm" (submit)="edit()" >
+        <div class="form-group">
+            <label>IdRayon</label>
+            <input type="text" class="form-control" formControlName="idRayon">
+        </div> 
         <div class="form-group">
             <label>CodeRayon</label>
-            <input type="text" class="form-control" formControlName="CodeRayon">
+            <input type="text" class="form-control" formControlName="codeRayon">
         </div> 
         <div class="form-group">
             <label>Libelle</label>
-            <input type="text" class="form-control" formControlName="libelle">
+            <input type="text" class="form-control" formControlName="libelleRayon">
         </div> 
         <br>
         <input type="submit" class="btn btn-primary" style="margin-left: 40%; margin-bottom: 20px;" value="Modifier">

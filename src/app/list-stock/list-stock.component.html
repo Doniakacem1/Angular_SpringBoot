@@ -29,9 +29,9 @@
                         <td>{{u.qteMin}}</td>
                         <td>{{u.libelleStock}}</td>
 
-                        <td><button class="btn btn-warning" >Modifier</button></td>
                         <td><button class ="btn btn-danger" (click)="deleteStock(u.idStock,i)" >supprimer</button></td>
-                    </tr>
+                        <td><button class="btn btn-warning" (click)="showEdit(u)">Modifier</button></td>
+                      </tr>
                     </tbody>
                   </table>
                 </div>
@@ -53,7 +53,7 @@
           </div>
           <!-- /.row -->
         <!-- /.container-fluid -->
-     
+        <app-edit-stock (edited)="updatestock($event)" [prop2]="myRay" [stockToEdit]="myRay" *ngIf="show" ></app-edit-stock>
       </section>
       <!-- Main Footer -->
     

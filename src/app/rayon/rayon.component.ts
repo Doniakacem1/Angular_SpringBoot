@@ -19,6 +19,10 @@ myRay: Rayon;
 
   ngOnInit(): void {
     this.rs.getRayonList().subscribe((ry)=>this.rayons=ry);// nparcouri biha liste eli mawjouda fel bd
+ 
+
+
+  
   }
 
   //i id de rayon ; j index de rayon dans la list angular 

@@ -21,8 +21,9 @@ export class EditRayonComponent implements OnInit {
 
   ngOnInit(): void {
     this.myForm=new FormGroup({
-      CodeRayon:new FormControl(this.rayonToEdit.codeRayon),
-      libelle:new FormControl(this.rayonToEdit.libelleRayon)
+      idRayon:new FormControl({"value": this.rayonToEdit.idRayon, "disabled" : true} ),
+      codeRayon:new FormControl(this.rayonToEdit.codeRayon),
+      libelleRayon:new FormControl(this.rayonToEdit.libelleRayon)
       
     })
   }
@@ -35,6 +36,7 @@ export class EditRayonComponent implements OnInit {
      })*/
      console.log(changes);
      if(!changes.rayonToEdit.firstChange){
+     this.myForm.setControl('idRayon',new FormControl(this.rayonToEdit.idRayon) );
      this.myForm.setControl('codeRayon',new FormControl(this.rayonToEdit.codeRayon));
      this.myForm.setControl('libelleRayon',new FormControl(this.rayonToEdit.libelleRayon)); 
    }

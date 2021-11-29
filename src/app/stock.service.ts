@@ -22,6 +22,10 @@ export class StockService {
     const url="http://localhost:8081/SpringMVC/servlet/remove-stock/"+id;
     return this.http.delete<Stock>(url);
     }
+    updateStock(sto:Stock):Observable<Stock>{
+      return this.http.put<Stock>("http://localhost:8081/SpringMVC/servlet/modify-stock",sto);
+
+     }
     addStock (Stock: object): Observable<object> {  
       return this.http.post('http://localhost:8081/SpringMVC/servlet/add-Stock', Stock);  }
 }

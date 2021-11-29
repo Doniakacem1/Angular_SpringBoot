@@ -9,6 +9,7 @@ export class RayonService {
   private baseUrl = 'http://localhost:8081/SpringMVC/servlet/getRayons'; 
   private productsUrl='http://localhost:8081/SpringMVC/servlet/add-rayon';
   private baseUrl1 = 'http://localhost:8081/SpringMVC/servlet/';  
+  private url='http://localhost:8081/SpringMVC/servlet/modify-rayon';
   constructor(private http:HttpClient) { }
   private _getHeaders():HttpHeaders{
     let header =new HttpHeaders({'Content_Type':'application/json'});
@@ -35,6 +36,8 @@ export class RayonService {
       return this.http.put<Rayon>("http://localhost:8081/SpringMVC/servlet/modify-rayon",ray);
 
      }
+   
      addRayon (Rayon: object): Observable<object> {  
-      return this.http.post('http://localhost:8081/SpringMVC/servlet/add-rayon', Rayon);  }
+      return this.http.post('http://localhost:8081/SpringMVC/servlet/add-rayon', Rayon); 
+     }
 }
