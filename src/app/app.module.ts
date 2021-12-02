@@ -13,6 +13,8 @@ import { AddRayonComponent } from './add-rayon/add-rayon.component';
 import { ListStockComponent } from './list-stock/list-stock.component';
 import { AddStockComponent } from './add-stock/add-stock.component';
 import { EditStockComponent } from './edit-stock/edit-stock.component';
+import { Ng2OrderModule } from 'ng2-order-pipe';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
  
 
 
@@ -34,7 +36,9 @@ import { EditStockComponent } from './edit-stock/edit-stock.component';
     AppRoutingModule,
     FormsModule,  
     ReactiveFormsModule,  
-    HttpClientModule,  
+    HttpClientModule,
+    Ng2OrderModule,
+    Ng2SearchPipeModule 
     
   ],
   providers: [],
