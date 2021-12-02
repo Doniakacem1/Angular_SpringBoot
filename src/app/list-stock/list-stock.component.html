@@ -6,9 +6,10 @@
             <div class="col-md-6">
               <div class="card">
                 <div class="card-header">
-                  <button  [routerLink]="['/AddStock']" class="btn btn-primary">Ajouter</button>
+                  <button  [routerLink]="['/AddStock']" class="btn btn-outline-primary">Ajouter</button>
                   <span  class="material-icons" (click)="download()" tabindex="-1" role="button" aria-disabled="true">
-                    picture_as_pdf </span>
+                    <button class="btn btn-outline-info"> pdf</button>
+                    </span>
 
                    </div>
                 <!-- /.card-header -->
@@ -34,8 +35,8 @@
                         <td>{{u.qteMin}}</td>
                         <td>{{u.libelleStock}}</td>
 
-                        <td><button class ="btn btn-danger" (click)="deleteStock(u.idStock,i)" >supprimer</button></td>
-                        <td><button class="btn btn-warning" (click)="showEdit(u)">Modifier</button></td>
+                        <td><button class ="btn btn-outline-danger" (click)="deleteStock(u.idStock,i)" >supprimer</button></td>
+                        <td><button class="btn btn-outline-warning" (click)="showEdit(u)">Modifier</button></td>
                       </tr>
                     </tbody>
                   </table>

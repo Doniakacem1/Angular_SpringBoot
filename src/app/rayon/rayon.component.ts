@@ -15,6 +15,7 @@ list: Rayon[];
 listInitiale: Rayon[];
 show:Boolean = false;
 myRay: Rayon;
+libelleRayon:string;
   constructor(private rs:RayonService, private ac:ActivatedRoute) { }
 
   ngOnInit(): void {
@@ -43,4 +44,18 @@ this.rayons.splice(j,1);
         this.list[k]=i;
       }
     }
-  }}
+  }
+
+  Search(){
+    if(this.libelleRayon == ""){
+      this.ngOnInit();
+    }
+    else{
+     
+      this.rayons = this.rayons.filter(res =>{
+        return res.libelleRayon.toLocaleString().match(this.libelleRayon.toLocaleString());
+      })
+    }
+  }
+
+}

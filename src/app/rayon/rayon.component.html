@@ -6,12 +6,13 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-header">
-           <button  [routerLink]="['/AddRayon']" class="btn btn-primary">Ajouter</button>
+           <button  [routerLink]="['/AddRayon']" class="btn btn-outline-primary">Ajouter</button>
            
             </div>
             <!-- /.card-header -->
+            <input type="text" class="form-control" placeholder=" Rechercher..." name="libelleRayon" [(ngModel)] ="libelleRayon" (ngModelChange)="Search()" >
             <div class="card-body">
-              <table class="table table-bordered">
+              <table class="table table-bordered" id="table">
              
                 <thead>
                   <tr>
@@ -28,8 +29,8 @@
                     <td>{{u.idRayon}}</td>
                     <td>{{u.codeRayon}}</td>
                     <td>{{u.libelleRayon}}</td>
-                    <td><button class ="btn btn-danger" (click)="deleteRayon(u.idRayon,i)" >supprimer</button></td>
-                    <td><button class="btn btn-warning" (click)="showEdit(u)">Modifier</button></td>
+                    <td><button class ="btn btn-outline-danger" (click)="deleteRayon(u.idRayon,i)" >supprimer</button></td>
+                    <td><button class="btn btn-outline-warning" (click)="showEdit(u)">Modifier</button></td>
                 </tr>
                 </tbody>
               </table>
