@@ -1,0 +1,33 @@
+
+      <form #f=ngForm  (submit)="save3()">  
+        <div class="mb-3">  
+            <label for="name">iD {{DetailProduit.idDetailProduit}}</label>  
+           
+     >
+           
+      
+           <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">dateDernierModification</label> 
+        <input name="code" [(ngModel)]="DetailProduit.dateDernierModification" #first="ngModel" type="date" class="form-control">
+    </div>
+       
+    <div class="mb-3">
+ <label for="exampleInputEmail1" class="form-label">datecreation</label>
+ <input name="code" [(ngModel)]="DetailProduit.datecreation" #first="ngModel" type="date" class="form-control">
+</div>    
+        </div>
+        <div class="mb-3">
+            <label for="exampleInputEmail1" class="form-label">categorieProduit</label>
+            <input name="code" [(ngModel)]="DetailProduit.categorieProduit" #first="ngModel" type="text" class="form-control">
+           </div>    
+      <div class="form-group">
+        <label class="form-control-label" for="exampleFormControlInput1">Produit</label>
+      <select class="form-control" for="exampleFormControlInput1" [(ngModel)]="DetailProduit.produit"  name="idProduit" >
+        <option *ngFor="let i of list" [ngValue]="i">{{i.idProduit}}</option>
+      </select>
+    </div>
+          
+    
+          <button type="submit" class="btn btn-success">Submit</button>  
+      </form>  
+ 

@@ -1,0 +1,47 @@
+<h3>Create DetailProduit</h3>  
+<div class="row">  
+  <div class="col-sm-4"></div>  
+  <div class="col-sm-4" >  
+    <div [hidden]="submitted" style="width: 400px;">
+        
+      <form [formGroup]="DetailProduitsaveform" #save (submit)="saveDetailProduit(saveDetailProduit)">  
+               
+          <div class="form-group">  
+              <label for="name">dateDernierModification</label>  
+              <input type="date"    id="dateDernierModification" class="form-control" formControlName="dateDernierModification" 
+       >
+              
+          </div>  
+
+          <div class="form-group">  
+            <label for="name">datecreation</label>  
+              <input type="date"    id="datecreation" class="form-control" formControlName="datecreation" 
+      >  
+               
+        </div>
+        <div class="form-group">  
+            <label for="name">categorieProduit</label>  
+            <input type="text" class="form-control" formControlName="categorieProduit"   
+              data-toggle="tooltip" data-placement="right" title="Enter categorieProduit">  
+              
+        </div>
+        
+      <div class="form-group">
+        <label class="form-control-label" for="exampleFormControlInput1">Produit</label>
+      <select class="form-control" for="exampleFormControlInput1" [(ngModel)]="DetailProduit.produit"  name="idProduit" >
+        <option *ngFor="let i of list" [ngValue]="i">{{i.idProduit}}</option>
+      </select>
+    </div>
+          
+    
+          <button type="submit" class="btn btn-success">Submit</button>  
+      </form>  
+  </div>  
+  </div>  
+  <div class="col-sm-4"></div>  
+</div>  
+<div class="row">  
+  <div class="col-sm-4"></div>  
+  
+  <div class="col-sm-4"></div>  
+</div>
