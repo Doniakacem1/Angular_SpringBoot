@@ -1,0 +1,64 @@
+package com.example.demo.Controller;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.Service.ClientServiceImpl;
+import com.example.demo.Service.IClientService;
+import com.example.demo.entities.Client;
+@CrossOrigin(origins="http://localhost:4200")
+@RestController
+public class ClientRestController {
+@Autowired
+ClientServiceImpl ClientService ;
+
+//http://localhost:8081/SpringMVC/servlet/getAllClient
+@GetMapping("/getAllClient")
+public List<Client> getClients(){
+List<Client> listClients = ClientService.retrieveAllClient();
+return listClients;
+
+}
+
+//http://localhost:8081/SpringMVC/servlet/addClient
+
+
+//http://localhost:8081/SpringMVC/servlet/getClient/{id_client}
+@GetMapping("/getClient/{id_client}")
+
+public Client retrieveClient(@PathVariable("id_client") Long clientId) {
+return ClientService.retrieveClient(clientId);
+}
+//http://localhost:8081/SpringMVC/servlet/add-client
+@PostMapping("/add-client")
+
+public Long addClient(@RequestBody Client c)
+{
+Long client = ClientService.addClient(c);
+return client;
+}
+//http://localhost:8081/SpringMVC/servlet/remove-client/{client-id}
+@DeleteMapping("/remove-client/{client-id}")
+@ResponseBody
+public void removeClient(@PathVariable("client-id") Long clientId) {
+ClientService.deleteClient(clientId);
+}
+
+//http://localhost:8081/SpringMVC/servlet/modify-client
+@PutMapping("/modify-client")
+@ResponseBody
+public Client modifyClient(@RequestBody Client client) {
+return ClientService.updateClient(client);
+}
+
+
+}
