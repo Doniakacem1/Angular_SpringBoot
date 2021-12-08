@@ -1,4 +1,5 @@
 import { Client } from "./client";
+import { DetailFacture } from './detail-facture';
 
 export class Facture {
   idFacture: number;
@@ -6,5 +7,7 @@ export class Facture {
   montantFacture: number;
   dateFacture: Date;
   active: boolean;
+  cl: Client;
+  details: DetailFacture;
   
 }

@@ -6,14 +6,17 @@ import { AppComponent } from './app.component';
 import { ListFactureComponent } from './facture/list-facture/list-facture.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SidebarComponent } from './sidebar/sidebar.component';
-import { HttpClientModule } from '@angular/common/http';
-
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EditFactureComponent } from './facture/edit-facture/edit-facture.component';
-import { CommonModule } from '@angular/common';
 import { AddFactureComponent } from './facture/add-facture/add-facture.component';
 import { ListDetailFactureComponent } from './DetailFacture/list-detail-facture/list-detail-facture.component';
 import { EditDetailFactureComponent } from './DetailFacture/edit-detail-facture/edit-detail-facture.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
+import { AjoutDetailFactureComponent } from './DetailFacture/ajout-detail-facture/ajout-detail-facture.component';
+
+
+
 
 
 
@@ -28,7 +31,8 @@ import { EditDetailFactureComponent } from './DetailFacture/edit-detail-facture/
     EditFactureComponent,
     AddFactureComponent,
     ListDetailFactureComponent,
-    EditDetailFactureComponent
+    EditDetailFactureComponent,
+    AjoutDetailFactureComponent
 
     
 
@@ -37,7 +41,7 @@ import { EditDetailFactureComponent } from './DetailFacture/edit-detail-facture/
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-   ReactiveFormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     CommonModule
   ],

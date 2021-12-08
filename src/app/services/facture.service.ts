@@ -46,5 +46,8 @@ private baseUrl = 'http://localhost:8081/SpringMVC/servlet/';
 
 createF(Fournisseur: object): Observable<object> {  
   return this._http.post(`${this.baseUrl}`+'add-facture', Fournisseur);  
-} 
+  } 
+  Cancelfacture(id:any) {
+    return this._http.put<Facture>('http://localhost:8081/SpringMVC/servlet/cancelfacture/'+id,id);
+  }
 }

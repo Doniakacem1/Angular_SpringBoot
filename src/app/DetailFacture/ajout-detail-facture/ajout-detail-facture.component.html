@@ -1,0 +1,59 @@
+<h3>Create detail Facture</h3>  
+<div class="row">  
+  <div class="col-sm-4"></div>  
+  <div class="col-sm-4" >  
+    <div [hidden]="submitted" style="width: 400px;">  
+      <form [formGroup]="DetailFacturesaveform" #save (ngSubmit)="saveDetailFacture(saveDetailFacture)">  
+          <div class="form-group">  
+              <label for="name">Quantite</label>  
+              <input type="text" class="form-control"  formControlName="qte" data-toggle="tooltip"   
+                 data-placement="right" title="Enter montantRemise" >  
+                 <div class="alert alert-danger" *ngIf="QuantiteF.errors">
+                    <div *ngIf="QuantiteF.errors.required">champs obligatoire</div>
+                    <div *ngIf="QuantiteF.errors.pattern">pattern non respecte</div>
+                          </div>
+          </div>  
+     
+          <div class="form-group">  
+              <label for="name">Prix Totale</label>  
+              <input type="text" class="form-control" formControlName="prixTotatl"   
+                data-toggle="tooltip" data-placement="right" title="Enter prix">  
+                <div class="alert alert-danger" *ngIf="prixF.errors">
+                    <div *ngIf="prixF.errors.required">champs obligatoire</div>
+                    <div *ngIf="prixF.errors.pattern">pattern non respecte</div>
+                          </div> 
+          </div>  
+
+      
+        <div class="form-group">  
+            <label for="name">pourcentage Remise</label>  
+            <input type="text" class="form-control" formControlName="pourcentageRemise"   
+              data-toggle="tooltip" data-placement="right" title="Enter pourcentageRemise">  
+              <div class="alert alert-danger" *ngIf="pourcF.errors">
+                <div *ngIf="pourcF.errors.required">champs obligatoire</div>
+                <div *ngIf="pourcF.errors.pattern">pattern non respecte</div>
+                      </div> 
+        </div>
+        <div class="form-group">  
+          <label for="name">Montant Remise</label>  
+          <input type="text" class="form-control" formControlName="montantRemise"   
+            data-toggle="tooltip" data-placement="right" title="Enter montantRemise">  
+            <div class="alert alert-danger" *ngIf="montantR.errors">
+              <div *ngIf="montantR.errors.required">champs obligatoire</div>
+              <div *ngIf="montantR.errors.pattern">pattern non respecte</div>
+                    </div> 
+      </div>
+    
+          
+    
+          <button type="submit" class="btn btn-success">Submit</button>  
+      </form>  
+  </div>  
+  </div>  
+  <div class="col-sm-4"></div>  
+</div>  
+<div class="row">  
+  <div class="col-sm-4"></div>  
+  
+  <div class="col-sm-4"></div>  
+</div>

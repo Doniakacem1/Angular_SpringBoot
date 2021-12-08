@@ -31,4 +31,7 @@ export class DetailFactureService {
    updateF(DetailFacture: object): Observable<object> {  
     return this._http.put(`${this.baseUrl}`+'modify-DF', DetailFacture,this.httpOptions);  
   } 
+  createF(DetailFacture: object): Observable<object> {  
+    return this._http.post(`${this.baseUrl}`+'add-DetailFacture', DetailFacture);  
+  } 
 }
