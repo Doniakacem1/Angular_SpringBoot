@@ -16,4 +16,12 @@ List<Stock> findAll(Pageable sort);
 	//retrieveStatus
 	@Query("SELECT s from Stock s where s.qteStock< s.qteMin")
 	List<Stock> retrieveStatusStock();
+	
+
+
+	//SelectStockByProduit
+            @Query(value="	select s.libelle_stock from stock s JOIN produit p on p.stock_id_stock=s.id_stock WHERE p.id_produit=?1",nativeQuery=true)
+			String getStockByProd(Long idProduit);
+            
+            
 }

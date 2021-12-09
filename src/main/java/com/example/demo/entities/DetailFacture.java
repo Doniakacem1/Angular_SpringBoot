@@ -1,11 +1,15 @@
 package com.example.demo.entities;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table( name = "DetailFacture")
@@ -16,34 +20,21 @@ public class DetailFacture {
 private long idDetailFacture;
 private Integer qte;
 private float prixTotatl;
-private Integer pourcentageRemise;
-private Integer montantRemise;
+private float pourcentageRemise;
+private float montantRemise;
 
 @ManyToOne
-private Facture facture;
+private Facture  detailfacture;
 @ManyToOne
-private Produit produit ;
+private Produit pro;
 
 
 
-
-public Facture getFacture() {
-	return facture;
-}
-public void setFacture(Facture facture) {
-	this.facture = facture;
-}
-public Produit getProduit() {
-	return produit;
-}
-public void setProduit(Produit produit) {
-	this.produit = produit;
-}
 public DetailFacture() {
 super();
 }
-public DetailFacture(long idDetailFacture, Integer qte, float prixTotatl, Integer pourcentageRemise,
-Integer montantRemise) {
+public DetailFacture(long idDetailFacture, Integer qte, float prixTotatl, float pourcentageRemise,
+float montantRemise) {
 super();
 this.idDetailFacture = idDetailFacture;
 this.qte = qte;
@@ -69,24 +60,38 @@ return prixTotatl;
 public void setPrixTotatl(float prixTotatl) {
 this.prixTotatl = prixTotatl;
 }
-public Integer getPourcentageRemise() {
+public float getPourcentageRemise() {
 return pourcentageRemise;
 }
-public void setPourcentageRemise(Integer pourcentageRemise) {
+public void setPourcentageRemise(float pourcentageRemise) {
 this.pourcentageRemise = pourcentageRemise;
 }
-public Integer getMontantRemise() {
+public float getMontantRemise() {
 return montantRemise;
 }
-public void setMontantRemise(Integer montantRemise) {
+public void setMontantRemise(float montantRemise) {
 this.montantRemise = montantRemise;
+}
+public Facture getDetailfacture() {
+return detailfacture;
+}
+public void setDetailfacture(Facture detailfacture) {
+this.detailfacture = detailfacture;
+}
+@JsonBackReference
+public Produit getPro() {
+return pro;
+}
+public void setPro(Produit pro) {
+this.pro = pro;
 }
 @Override
 public String toString() {
-	return "DetailFacture [idDetailFacture=" + idDetailFacture + ", qte=" + qte + ", prixTotatl=" + prixTotatl
-			+ ", pourcentageRemise=" + pourcentageRemise + ", montantRemise=" + montantRemise + ", facture=" + facture
-			+ ", produit=" + produit + "]";
+return "DetailFacture [idDetailFacture=" + idDetailFacture + ", qte=" + qte + ", prixTotatl=" + prixTotatl
++ ", pourcentageRemise=" + pourcentageRemise + ", montantRemise=" + montantRemise + ", detailfacture="
++ detailfacture + ", pro=" + pro + "]";
 }
+
 
 
 

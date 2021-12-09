@@ -1,4 +1,4 @@
-package com.example.demo.Service;
+/*package com.example.demo.Service;
 
 import java.util.List;
 
@@ -6,44 +6,48 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.demo.Repository.DetailFactureRepository;
+import com.example.demo.entities.DetailFacture;
 
-import com.example.demo.entities.DetailFacture;;
 
 @Service
 public class DetailFactureServiceImpl implements IDetailFactureService {
+@Autowired
+DetailFactureRepository detailfacture;
 
-	@Autowired
-	DetailFactureRepository DetailFactureRepository;
 
-	@Override
-	public List<DetailFacture> retrieveAllDetailFacture() {
-		List<DetailFacture> DetailFacture=(List<DetailFacture>) DetailFactureRepository.findAll();
-		for(DetailFacture p : DetailFacture){
-			System.out.println(p);
-		}
-		return DetailFacture;
-	}
+@Override
+public List<DetailFacture> retrieveAllDetailFacture() {
 
-	@Override
-	public Long addDetailFacture(DetailFacture u) {
-		DetailFactureRepository.save(u); 
-		return u.getIdDetailFacture();
-	}
+List<DetailFacture> details =(List<DetailFacture> )detailfacture.findAll();
 
-	@Override
-	public void deleteDetailFacture(Long id) {
-		DetailFactureRepository.deleteById(id);
-		
-	}
+for (DetailFacture d: details){
 
-	@Override
-	public DetailFacture updateDetailFacture(DetailFacture u) {
-		DetailFactureRepository.save(u); 
-		return u;
-	}
-
-	@Override
-	public DetailFacture retrieveDetailFacture(Long id) {
-		return DetailFactureRepository.findById(id).get(); 
-	}
+System.out.println("test");
 }
+return details;
+}
+
+@Override
+public DetailFacture addDetailFacture(DetailFacture d) {
+return detailfacture.save(d);
+}
+
+@Override
+public void deleteDetailFacture(Long id) {
+detailfacture.deleteById(id);
+
+}
+
+@Override
+public DetailFacture updateDetailFacture(DetailFacture d) {
+detailfacture.save(d);
+return d;
+}
+
+@Override
+public DetailFacture retrieveDetailFacture(Long id) {
+return detailfacture.findById(id).get();
+}
+
+}
+*/
